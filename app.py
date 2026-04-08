@@ -37,8 +37,8 @@ COORDS = {
     'transport': (350, 120),
     'date': (1280, 110),
     'seller': (350, 222),
-    'buyer': (300, 320),
-    'dest': (360, 433)
+    'buyer': (290, 324),
+    'dest': (370, 435)
 }
 FONT_SIZE = 50 
 
