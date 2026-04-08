@@ -13,11 +13,11 @@ def get_gujarati_sound(text):
 
 # 2. COORDINATES & SETTINGS
 COORDS = {
-    'transport': (250, 105),
-    'date': (1200, 105),
-    'seller': (250, 200),
-    'buyer': (250, 350),
-    'dest': (300, 425)
+    'transport': (300, 105),
+    'date': (1250, 110),
+    'seller': (300, 210),
+    'buyer': (260, 335),
+    'dest': (320, 430)
 }
 FONT_SIZE = 50 # Adjusted to be larger as requested
 
