@@ -17,7 +17,7 @@ COORDS = {
     'date': (1280, 115),
     'seller': (350, 218),
     'buyer': (270, 332),
-    'dest': (355, 440)
+    'dest': (365, 440)
 }
 FONT_SIZE = 50 # Adjusted to be larger as requested
 
