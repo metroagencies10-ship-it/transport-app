@@ -34,11 +34,11 @@ def get_gujarati_translation(text):
 
 # 2. SETTINGS
 COORDS = {
-    'transport': (300, 120),
+    'transport': (350, 120),
     'date': (1280, 110),
-    'seller': (350, 300),
+    'seller': (350, 250),
     'buyer': (450, 300),
-    'dest': (550, 325)
+    'dest': (550, 425)
 }
 FONT_SIZE = 50 
 
