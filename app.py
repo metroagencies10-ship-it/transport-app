@@ -4,46 +4,40 @@ from deep_translator import GoogleTranslator
 import io
 import os
 
-# 1. TRANSLATION FUNCTION WITH CORRECTIONS
 def get_gujarati_translation(text):
     if not text: return ""
     
-    # 1. Your custom business dictionary
-    # Keep these in lowercase for easier matching
+    # 1. Your Custom Corrections
     corrections = {
         "shri": "શ્રી",
         "fortune": "ફોર્ચ્યુન",
         "spring": "સ્પ્રિંગ",
-        "limited": "લિમિટેડ",
-        "pvt": "પ્રા. લિ."
+        "auto": "ઓટો",
+        "pvt": "પ્રા. લિ.",
+        "ltd": "લિ."
     }
     
-    # 2. First, let's replace the specific words in your English input
-    # so Google doesn't mess them up.
     words = text.split()
-    processed_words = []
+    final_words = []
     
     for word in words:
-        # Clean the word (remove dots or commas for the check)
+        # Clean the word to check the dictionary
         clean_word = word.lower().strip().replace(".", "").replace(",", "")
         
         if clean_word in corrections:
-            # If it's in our dictionary, use our word
-            processed_words.append(corrections[clean_word])
+            # Force your specific word from the dictionary
+            final_words.append(corrections[clean_word])
         else:
-            # Otherwise, keep it as is for Google to translate later
-            processed_words.append(word)
-    
-    # 3. Join them back together
-    # If the text is now all Gujarati (e.g. "શ્રી ફોર્ચ્યુન"), 
-    # Google Translate will just return it as is.
-    final_input = " ".join(processed_words)
-    
-    try:
-        translated = GoogleTranslator(source='en', target='gu').translate(final_input)
-        return translated
-    except:
-        return final_input
+            # Only if it's NOT in the dictionary, ask Google
+            try:
+                # Translating word-by-word prevents Google from getting confused
+                translated_word = GoogleTranslator(source='en', target='gu').translate(word)
+                final_words.append(translated_word)
+            except:
+                final_words.append(word)
+                
+    # Join them back together with a space
+    return " ".join(final_words)
         
 # 2. SETTINGS
 COORDS = {
