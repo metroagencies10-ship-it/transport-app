@@ -11,12 +11,7 @@ def get_gujarati_translation(text):
     # Custom dictionary for common business words
     # You can add more words here!
     corrections = {
-        "transport": "ટ્રાન્સપોર્ટ",
-        "limited": "લિમિટેડ",
-        "company": "કંપની",
-        "sarkhej": "સરખેજ",
-        "baroda": "વડોદરા",
-        "ahmedabad": "અમદાવાદ"
+        "shri": "શ્રી"
     }
     
     clean_text = text.lower().strip()
