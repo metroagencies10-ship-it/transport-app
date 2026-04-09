@@ -11,7 +11,9 @@ def get_gujarati_translation(text):
     # Custom dictionary for common business words
     # You can add more words here!
     corrections = {
-        "shri": "શ્રી"
+        "shri": "શ્રી",
+        "fortune": "ફોર્ચ્યુન",
+        "spring": "સ્પ્રિંગ"
     }
     
     clean_text = text.lower().strip()
