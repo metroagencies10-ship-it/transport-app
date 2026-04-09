@@ -8,27 +8,43 @@ import os
 def get_gujarati_translation(text):
     if not text: return ""
     
-    # Custom dictionary for common business words
-    # You can add more words here!
+    # 1. Your custom business dictionary
+    # Keep these in lowercase for easier matching
     corrections = {
         "shri": "શ્રી",
         "fortune": "ફોર્ચ્યુન",
-        "spring": "સ્પ્રિંગ"
+        "spring": "સ્પ્રિંગ",
+        "limited": "લિમિટેડ",
+        "pvt": "પ્રા. લિ."
     }
     
-    clean_text = text.lower().strip()
+    # 2. First, let's replace the specific words in your English input
+    # so Google doesn't mess them up.
+    words = text.split()
+    processed_words = []
     
-    # If it's a simple business word, use our correction
-    if clean_text in corrections:
-        return corrections[clean_text]
+    for word in words:
+        # Clean the word (remove dots or commas for the check)
+        clean_word = word.lower().strip().replace(".", "").replace(",", "")
+        
+        if clean_word in corrections:
+            # If it's in our dictionary, use our word
+            processed_words.append(corrections[clean_word])
+        else:
+            # Otherwise, keep it as is for Google to translate later
+            processed_words.append(word)
     
-    # Otherwise, let Google Translate handle it
+    # 3. Join them back together
+    # If the text is now all Gujarati (e.g. "શ્રી ફોર્ચ્યુન"), 
+    # Google Translate will just return it as is.
+    final_input = " ".join(processed_words)
+    
     try:
-        translated = GoogleTranslator(source='en', target='gu').translate(text)
+        translated = GoogleTranslator(source='en', target='gu').translate(final_input)
         return translated
     except:
-        return text # Return original if internet fails
-
+        return final_input
+        
 # 2. SETTINGS
 COORDS = {
     'transport': (350, 120),
